@@ -13,6 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.shopeapp.ui.auth.login.LoginScreen
+import com.example.shopeapp.ui.auth.register.RegisterScreen
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -24,7 +26,7 @@ import shopeapp.composeapp.generated.resources.compose_multiplatform
 fun App() {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
-        Column(
+/*        Column(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.primaryContainer)
                 .safeContentPadding()
@@ -44,6 +46,8 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
-        }
+        }*/
+
+        RegisterScreen()
     }
 }

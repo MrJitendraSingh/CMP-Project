@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ShopeApp</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="submit">Submit</string>
+    <string name="login">LOGIN</string>
+    <string name="register">Register</string>
+    <string name="back">Back</string>
+    <string name="neo_store">NeoSTORE</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="agree_terms">I agree the Terms &amp; Conditions</string>
+    <string name="register_button">REGISTER</string>
+</resources>
