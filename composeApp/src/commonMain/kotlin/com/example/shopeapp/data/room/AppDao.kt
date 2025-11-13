@@ -14,6 +14,9 @@ interface AppDao {
     @Insert
     fun insert(appEntity: UserLoginEntity)
 
+    @Query("SELECT * FROM user_login WHERE id = :id")
+    fun getUserById(id: Long): UserLoginEntity
+
     @Query("DELETE FROM user_login WHERE id = :id")
     fun delete(id: Long)
 

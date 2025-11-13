@@ -39,6 +39,8 @@ import com.example.shopeapp.ui.theme.WhiteFF
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
 import shopeapp.composeapp.generated.resources.Res
 import shopeapp.composeapp.generated.resources.gotham_bold
 import shopeapp.composeapp.generated.resources.gotham_medium
@@ -50,10 +52,12 @@ import shopeapp.composeapp.generated.resources.password
 import shopeapp.composeapp.generated.resources.username
 
 
+@OptIn(KoinExperimentalAPI::class)
 @Composable
 fun LoginScreen() {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    val viewModel = koinViewModel<LoginViewModel>()
+    var username by remember { mutableStateOf(viewModel.userLogin.value?.username?:"") }
+    var password by remember { mutableStateOf(viewModel.userLogin.value?.password?:"") }
 
     Box(
         modifier = Modifier
@@ -94,7 +98,10 @@ fun LoginScreen() {
 
             PrimaryButton(
                 text = Res.string.login,
-                onClick = { }
+                onClick = {
+                    viewModel.setUsername(username)
+                    viewModel.setPassword(password)
+                }
             )
 
             Spacer(modifier = Modifier.height(65.dp/2))

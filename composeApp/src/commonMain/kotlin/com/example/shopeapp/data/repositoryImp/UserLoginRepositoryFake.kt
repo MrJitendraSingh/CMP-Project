@@ -6,29 +6,34 @@ import com.example.shopeapp.domain.model.UserLoginModel
 import com.example.shopeapp.domain.repository.UserLoginRepository
 
 
-/*
-class UserLoginRepositoryImp(val dao: AppDao): UserLoginRepository {
+class UserLoginRepositoryFake(): UserLoginRepository {
+
+    var list = mutableListOf<UserLoginModel>(
+        UserLoginModel(1, "user1", "password1"),
+        UserLoginModel(2, "user2", "password2"),
+        UserLoginModel(3, "user3", "password3")
+    )
     override fun getAllUsers(): List<UserLoginModel> {
-        TODO("Not yet implemented")
+        // adding dummy data list
+        return list
     }
 
     override fun getUserById(id: Long): UserLoginModel {
-        val user = dao.getUserById(id)
-        return UserLoginModel(user.id, user.username, user.password)
+        return list.first { it.id == id }
     }
 
     override fun insertUser(user: UserLoginModel) {
-        dao.insert(UserLoginEntity(user.id, user.username, user.password))
+        list.add(user)
     }
 
     override fun updateUser(user: UserLoginModel) {
-        TODO("Not yet implemented")
+
     }
 
     override fun deleteUser(id: Long) {
-        dao.delete(id)
+        list.forEach {
+            if(it.id == id) list.remove(it)
+        }
     }
 
 }
-*/
-

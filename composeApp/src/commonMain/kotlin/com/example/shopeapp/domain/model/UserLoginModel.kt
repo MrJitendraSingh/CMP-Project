@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 
 data class UserLoginModel (
     val id: Long = 0,
-    val username: String,
+    var username: String,
     var password: String
 )
