@@ -38,6 +38,7 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
+            implementation(compose.materialIconsExtended)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
@@ -56,6 +57,9 @@ kotlin {
             //DataStore
             api(libs.datastore.preferences)
             api(libs.datastore)
+            //Image
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

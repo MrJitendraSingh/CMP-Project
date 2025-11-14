@@ -14,7 +14,7 @@ class LoginViewModel(
     private val pref : PrefRepository
 ): ViewModel() {
 
-    private val _userLogin = MutableStateFlow<UserLoginModel?>(null)
+    private val _userLogin = MutableStateFlow<UserLoginModel?>(UserLoginModel(id = 1, username = "", password = ""))
     val userLogin = _userLogin.asStateFlow()
 
     init {
@@ -42,13 +42,17 @@ class LoginViewModel(
 
     fun getUsername(){
         viewModelScope.launch {
+            print("Username")
             _userLogin.value?.username = pref.getUsername()
+            print(pref.getUsername())
         }
     }
 
     fun getPassword(){
         viewModelScope.launch {
+            print("Password")
             _userLogin.value?.password = pref.getPassword()
+            print(pref.getPassword())
         }
     }
 

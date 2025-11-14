@@ -8,17 +8,21 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.shopeapp.ui.auth.login.LoginScreen
 import com.example.shopeapp.ui.auth.register.RegisterScreen
+import com.example.shopeapp.ui.main.home.HomeScreen
 
 
 @Composable
 fun NavigationGraph(navController: NavHostController = rememberNavController(),
                     modifier: Modifier = Modifier) {
-    NavHost(navController = navController, startDestination = ScreenRoute.LoginScreen.route, modifier = modifier){
+    NavHost(navController = navController, startDestination = ScreenRoute.HomeScreen.route, modifier = modifier){
         composable(ScreenRoute.LoginScreen.route){
             LoginScreen()
         }
         composable(ScreenRoute.RegisterScreen.route){
             RegisterScreen()
+        }
+        composable(ScreenRoute.HomeScreen.route){
+            HomeScreen()
         }
     }
 

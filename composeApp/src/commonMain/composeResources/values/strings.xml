@@ -17,4 +17,8 @@
     <string name="phone_number">Phone Number</string>
     <string name="agree_terms">I agree the Terms &amp; Conditions</string>
     <string name="register_button">REGISTER</string>
+    <string name="tables">Tables</string>
+    <string name="sofas">Sofas</string>
+    <string name="chairs">Chairs</string>
+    <string name="cupboards">Cupboards</string>
 </resources>
