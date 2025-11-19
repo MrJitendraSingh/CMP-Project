@@ -14,12 +14,16 @@ import com.example.shopeapp.ui.main.home.HomeScreen
 @Composable
 fun NavigationGraph(navController: NavHostController = rememberNavController(),
                     modifier: Modifier = Modifier) {
-    NavHost(navController = navController, startDestination = ScreenRoute.HomeScreen.route, modifier = modifier){
+    NavHost(navController = navController, startDestination = ScreenRoute.RegisterScreen.route, modifier = modifier){
         composable(ScreenRoute.LoginScreen.route){
-            LoginScreen()
+            LoginScreen{
+                navController.navigate(ScreenRoute.HomeScreen.route)
+            }
         }
         composable(ScreenRoute.RegisterScreen.route){
-            RegisterScreen()
+            RegisterScreen{
+                navController.navigate(ScreenRoute.LoginScreen.route)
+            }
         }
         composable(ScreenRoute.HomeScreen.route){
             HomeScreen()

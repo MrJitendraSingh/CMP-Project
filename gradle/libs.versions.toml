@@ -22,7 +22,9 @@ koinComposeMultiplatform = "1.2.0-Beta4"
 navigationCompose = "2.8.0-alpha02"
 lifecycleViewModel = "2.8.2"
 datastore = "1.1.7"
-coil = "3.0.4"
+coil = "3.3.0"
+ktor = "3.3.2"
+kotlinx-coroutines = "1.10.2"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -53,6 +55,11 @@ datastore-preferences = { module = "androidx.datastore:datastore-preferences", v
 
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
+
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-client-java = { group = "io.ktor", name = "ktor-client-java", version.ref = "ktor" }
+kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 
 
 [plugins]

@@ -46,6 +46,8 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
 import shopeapp.composeapp.generated.resources.Res
 import shopeapp.composeapp.generated.resources.agree_terms
 import shopeapp.composeapp.generated.resources.back
@@ -70,17 +72,10 @@ import shopeapp.composeapp.generated.resources.register
 import shopeapp.composeapp.generated.resources.register_button
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, KoinExperimentalAPI::class)
 @Composable
-fun RegisterScreen() {
-    var firstName by remember { mutableStateOf("") }
-    var lastName by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
-    var gender by remember { mutableStateOf("Male") }
-    var phoneNumber by remember { mutableStateOf("") }
-    var agreeTerms by remember { mutableStateOf(false) }
+fun RegisterScreen(onClick:() -> Unit) {
+    val viewModel = koinViewModel<RegisterViewModel>()
 
 
     Column( modifier = Modifier
@@ -122,37 +117,37 @@ fun RegisterScreen() {
             )
             Spacer(modifier = Modifier.height(40.dp))
             LeadingIconInputField(
-                value = firstName,
-                onValueChange = { firstName = it },
+                value = viewModel.userLogin.value?.firstName?:"",
+                onValueChange = { viewModel.userLogin.value?.firstName = it },
                 placeholder = Res.string.first_name,
                 leadingIcon = Res.drawable.ic_person_icon
             )
             Spacer(modifier = Modifier.height(20.dp))
             LeadingIconInputField(
-                value = lastName,
-                onValueChange = { lastName = it },
+                value = viewModel.userLogin.value?.lastName?:"",
+                onValueChange = { viewModel.userLogin.value?.lastName = it },
                 placeholder = Res.string.last_name,
                 leadingIcon = Res.drawable.ic_person_icon
             )
             Spacer(modifier = Modifier.height(20.dp))
             LeadingIconInputField(
-                value = email,
-                onValueChange = { email = it },
+                value = viewModel.userLogin.value?.email?:"",
+                onValueChange = { viewModel.userLogin.value?.email = it },
                 placeholder = Res.string.email,
                 leadingIcon = Res.drawable.ic_mail_icon
             )
             Spacer(modifier = Modifier.height(20.dp))
             LeadingIconInputField(
-                value = password,
-                onValueChange = { password = it },
+                value = viewModel.userLogin.value?.password?:"",
+                onValueChange = { viewModel.userLogin.value?.password = it },
                 placeholder = Res.string.password,
                 leadingIcon = Res.drawable.ic_lock_open_icon,
                 visualTransformation = PasswordVisualTransformation()
             )
             Spacer(modifier = Modifier.height(20.dp))
             LeadingIconInputField(
-                value = confirmPassword,
-                onValueChange = { confirmPassword = it },
+                value = viewModel.userLogin.value?.confirmPassword?:"",
+                onValueChange = { viewModel.userLogin.value?.confirmPassword = it },
                 placeholder = Res.string.confirm_password,
                 leadingIcon = Res.drawable.ic_lock_icon,
                 visualTransformation = PasswordVisualTransformation()
@@ -161,30 +156,30 @@ fun RegisterScreen() {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 MediumText(stringResource = Res.string.gender)
                 RadioButton(
-                    selected = gender == "Male",
-                    onClick = { gender = "Male" },
+                    selected = viewModel.userLogin.value?.gender == "Male",
+                    onClick = { viewModel.userLogin.value?.gender = "Male" },
                     colors = RadioButtonDefaults.colors(selectedColor = WhiteFF, unselectedColor = WhiteFF)
                 )
                 MediumText(stringResource = Res.string.male)
                 RadioButton(
-                    selected = gender == "Female",
-                    onClick = { gender = "Female" },
+                    selected = viewModel.userLogin.value?.gender == "Female",
+                    onClick = { viewModel.userLogin.value?.gender = "Female" },
                     colors = RadioButtonDefaults.colors(selectedColor = WhiteFF, unselectedColor = WhiteFF)
                 )
                 MediumText(stringResource = Res.string.female)
             }
             Spacer(modifier = Modifier.height(20.dp))
             LeadingIconInputField(
-                value = phoneNumber,
-                onValueChange = { phoneNumber = it },
+                value = viewModel.userLogin.value?.phoneNumber?:"",
+                onValueChange = { viewModel.userLogin.value?.phoneNumber = it },
                 placeholder = Res.string.phone_number,
                 leadingIcon = Res.drawable.ic_mobile_icon
             )
             Spacer(modifier = Modifier.height(20.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(
-                    checked = agreeTerms,
-                    onCheckedChange = { agreeTerms = it },
+                    checked = viewModel.userLogin.value?.termsAndConditions?:false,
+                    onCheckedChange = { viewModel.userLogin.value?.termsAndConditions = it },
                     colors = CheckboxDefaults.colors(
                         checkedColor = WhiteFF,
                         uncheckedColor = WhiteFF,
@@ -195,7 +190,7 @@ fun RegisterScreen() {
             }
             Spacer(modifier = Modifier.height(20.dp))
             PrimaryButton(text = Res.string.register_button,){
-
+                viewModel.registerUser()
             }
         }
 
@@ -206,7 +201,7 @@ fun RegisterScreen() {
 @Composable
 @Preview
 fun RegisterScreenPreview() {
-    RegisterScreen()
+    RegisterScreen{}
 }
 
 

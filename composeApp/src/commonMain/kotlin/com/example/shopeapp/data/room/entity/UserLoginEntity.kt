@@ -8,5 +8,6 @@ data class UserLoginEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val username: String,
+    val email: String,
     var password: String
 )

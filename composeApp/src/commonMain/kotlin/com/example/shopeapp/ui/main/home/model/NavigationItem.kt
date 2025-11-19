@@ -1,12 +1,10 @@
 package com.example.shopeapp.ui.main.home.model
 
-import com.example.shopeapp.util.SideAlign
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-data class Category(
+data class NavigationItem(
     val title: StringResource,
-    val titleAlignment: SideAlign,
     val icon: DrawableResource,
-    val iconAlignment: SideAlign
+    val badgeCount: Int? = null
 )

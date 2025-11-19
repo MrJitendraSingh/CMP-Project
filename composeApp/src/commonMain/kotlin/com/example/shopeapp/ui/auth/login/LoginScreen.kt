@@ -54,7 +54,7 @@ import shopeapp.composeapp.generated.resources.username
 
 @OptIn(KoinExperimentalAPI::class)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onClick:() -> Unit) {
     val viewModel = koinViewModel<LoginViewModel>()
     var username by remember { mutableStateOf(viewModel.userLogin.value?.username?:"") }
     var password by remember { mutableStateOf(viewModel.userLogin.value?.password?:"") }
@@ -101,6 +101,7 @@ fun LoginScreen() {
                 onClick = {
                     viewModel.setUsername(username)
                     viewModel.setPassword(password)
+                    onClick()
                 }
             )
 
@@ -141,6 +142,8 @@ fun LoginScreen() {
 @Composable
 @Preview
 fun LoginScreenPreview() {
-    LoginScreen()
+    LoginScreen{
+
+    }
 }
 

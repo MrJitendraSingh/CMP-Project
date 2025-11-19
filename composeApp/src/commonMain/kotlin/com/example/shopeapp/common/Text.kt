@@ -2,6 +2,7 @@ package com.example.shopeapp.common
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
 import com.example.shopeapp.ui.theme.WhiteFF
@@ -20,4 +21,16 @@ fun MediumText(stringResource: StringResource,
         fontFamily = FontFamily(Font(Res.font.gotham_medium)),
         color = WhiteFF
     )
+}
+
+@Composable
+fun TextMedium(
+    text: String,
+    fontSize: Int = 16,
+    color: Color
+){
+    Text(text = text,
+        fontSize = fontSize.sp,
+        fontFamily = FontFamily(Font(Res.font.gotham_medium)),
+        color = color)
 }

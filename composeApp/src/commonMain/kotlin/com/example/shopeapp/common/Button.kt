@@ -1,9 +1,13 @@
 package com.example.shopeapp.common
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,13 +17,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.shopeapp.ui.theme.Red1A
 import com.example.shopeapp.ui.theme.WhiteFF
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.Font
+import org.jetbrains.compose.resources.Resource
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import shopeapp.composeapp.generated.resources.Res
 import shopeapp.composeapp.generated.resources.gotham_bold
 import shopeapp.composeapp.generated.resources.gotham_medium
+import shopeapp.composeapp.generated.resources.ic_arrow_back_icon
 import shopeapp.composeapp.generated.resources.submit
 
 
@@ -50,4 +58,17 @@ fun PrimaryButton(
 @Preview
 fun PrimaryButtonPreview(){
     PrimaryButton()
+}
+
+@Composable
+fun Icon24Button(
+    icon: DrawableResource = Res.drawable.ic_arrow_back_icon,
+    onClick: () -> Unit = {}
+){
+    Icon(painter = painterResource(icon), contentDescription = null,
+        tint = WhiteFF,
+        modifier = Modifier
+            .padding(8.dp)
+            .size(24.dp)
+            .clickable { onClick() })
 }

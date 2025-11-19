@@ -5,16 +5,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.shopeapp.domain.model.UserLoginModel
 import com.example.shopeapp.domain.repository.PrefRepository
 import com.example.shopeapp.domain.repository.UserLoginRepository
+import com.example.shopeapp.domain.repository.UserRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val userLoginRepository: UserLoginRepository,
+    private val userRepository: UserRepository,
     private val pref : PrefRepository
 ): ViewModel() {
 
-    private val _userLogin = MutableStateFlow<UserLoginModel?>(UserLoginModel(id = 1, username = "", password = ""))
+    private val _userLogin = MutableStateFlow<UserLoginModel?>(UserLoginModel(id = 1, username = "", email = "", password = ""))
     val userLogin = _userLogin.asStateFlow()
 
     init {
@@ -22,11 +23,6 @@ class LoginViewModel(
         getPassword()
     }
 
-    fun getUserById(id: Long) {
-        viewModelScope.launch {
-            _userLogin.value = userLoginRepository.getUserById(id)
-        }
-    }
 
     fun setUsername(username: String) {
         viewModelScope.launch {

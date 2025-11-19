@@ -21,4 +21,10 @@
     <string name="sofas">Sofas</string>
     <string name="chairs">Chairs</string>
     <string name="cupboards">Cupboards</string>
+    <string name="my_cart">My Cart</string>
+    <string name="my_orders">My Orders</string>
+    <string name="my_account">My Account</string>
+    <string name="logout">Logout</string>
+    <string name="my_profile">My Profile</string>
+    <string name="store_locator">Store Locator</string>
 </resources>
